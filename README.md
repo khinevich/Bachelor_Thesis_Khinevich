@@ -1,5 +1,5 @@
 <div align="center">
-![Technical University of Munich](TUM_logo.svg)
+![Technical University of Munich](./TUM_logo.svg)
   
 # Bachelor’s Thesis in Information Systems
   
