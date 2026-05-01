@@ -17,14 +17,16 @@ Supervisor: Prof. Dr. Stephan Krusche
 
 ## Abstract
 
-Automated quality assurance for multi-artifact programming exercises is an important component of scalable computer science education. Existing systems that use large language models (LLMs) to detect inconsistencies between exercise components demonstrate fundamental feasibility, but suffer from significant limitations in detection precision, leading to high rates of false positives. The current approach does not explicitly model the relationships between exercise components, such as problem statement, code templates, sample solutions and tests repositories.
+The Technical University of Munich developed Artemis, an open-source learning management system that hosts multi-artifact programming exercises. Each exercise consists of four interconnected artifacts — problem statement, template, solution and test repositories — that instructors and teaching assistants collaboratively create and maintain. Inconsistencies between these artifacts arise when an instructor modifies one artifact but overlooks the corresponding changes in dependent ones, producing mismatched method names or conflicting type declarations. The Hyperion consistency check within Artemis uses large language models (LLMs) to detect these inconsistencies, but suffers from low precision: the baseline produces nearly one false positive for every two correct detections, forcing instructors to manually verify each reported issue.
 
-We extend the existing system by establishing an on-demand benchmarking workflow and expanding the dataset with 16 real university exercises to enable comparable, reproducible evaluation. To reduce false positives, we add a language-aware context filter and a verification checker that re-evaluates detected issues before reporting. To address the structural limitation directly, we model semantic and structural relationships between exercise artifacts via a knowledge-graph-based context representation and integrate it into the LLM-based consistency check pipeline. Together, these contributions aim to deliver a more reliable and sustainable system for ensuring the quality of education.
+This thesis addresses the precision bottleneck and the limitations of the existing detection system through three contributions: (1) It establishes a reproducible benchmarking workflow that connects Artemis with PECV-bench, an evaluation framework for consistency detection, enabling systematic comparison of detection approaches under identical conditions. (2) It extends the evaluation dataset from three Java exercises with 91 variants to 16 exercises with 325 variants across six university courses and multiple programming languages, including Python, C, Assembler, SQL, and Swift. (3) It improves detection precision by introducing a language-aware context filter that removes irrelevant files before analysis and a verification checker that re-evaluates each detected issue to filter false positives.
+
+The verification checker improves precision from 0.531 to 0.819 while maintaining recall at 0.767, raising the F1 score from 0.633 to 0.793 on the extended dataset. Instructors benefit from a lower false positive rate, which reduces manual review and increases the reliability of the automated analysis. The approach relies on closed-source LLM APIs, which introduce non-determinism and limit reproducibility. Abstract Syntax Trees, Knowledge Graphs, and Graph-based Retrieval-Augmented Generation represent the primary direction for future work targeting the remaining false positives.
 
 We defined the following objectives to achieve described goals:
 1. Establish an On-Demand Benchmarking Workflow.
 2. Extend Consistency Check Dataset.
 3. Improve Consistency Issues Detection.
-4. Enhance Context Representation.
+4. Enhance Context Representation (Future Work).
 
 [Mikhail Khinevich Thesis Proposal](proposal.pdf)
